@@ -59,7 +59,12 @@ function starto() {
     if (direction == "up") snakY -= box;
     if (direction == "down") snakY += box;
 
-    snak.pop();
+    if (snakX != food.x || snakY != food.y) {
+        snak.pop();
+    } else {
+        food.x = Math.floor(Math.random() * 15 + 1) * box;
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
 
     let newHead = {
         x: snakX, 
