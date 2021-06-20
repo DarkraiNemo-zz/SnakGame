@@ -21,7 +21,22 @@ function theSnak() {
     }
 }
 
+document.addEventListener('keydown', update);
+
+function update(event) {
+    if (event.keyCode == 37 && direction != "rigth") direction = "left";
+    if (event.keyCode == 38 && direction != "down") direction = "up";
+    if (event.keyCode == 39 && direction != "left") direction = "right";
+    if (event.keyCode == 40 && direction != "up") direction = "down";
+}
+
 function starto() {
+    if (snak[0].x > 15 * box && direction == "right") snak[0].x = 0;
+    if (snak[0].x < 0 && direction == "left") snak[0].x = 16 * box;
+    if (snak[0].y > 15 * box && direction == "down") snak[0].y = 0;
+    if (snak[0].y < 0 && direction == "up") snak[0].y = 16 * box;
+    
+
     background();
     theSnak();
 
