@@ -7,6 +7,11 @@ snak[0] = {
     y: 8 * box
 }
 
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 let direction = "right";
 
 function background() {
@@ -19,6 +24,11 @@ function theSnak() {
         context.fillStyle = "green";
         context.fillRect(snak[i].x, snak[i].y, box, box);
     }
+}
+
+function drawFood() {
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box)
 }
 
 document.addEventListener('keydown', update);
@@ -39,6 +49,7 @@ function starto() {
 
     background();
     theSnak();
+    drawFood();
 
     let snakX = snak[0].x;
     let snakY = snak[0].Y;
