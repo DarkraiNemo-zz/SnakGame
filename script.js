@@ -16,10 +16,32 @@ function background() {
 
 function theSnak() {
     for (i=0; i < snake.length; i++) {
-        context.fillStyle = "blue";
+        context.fillStyle = "green";
         context.fillRect(snak[i].x, snak[i].y, box, box);
     }
 }
 
-background();
-theSnak();
+function starto() {
+    background();
+    theSnak();
+
+    let snakX = snak[0].x;
+    let snakY = snak[0].Y;
+
+    if (direction == "rigth") snakX += box;
+    if (direction == "left") snakX -= box;
+    if (direction == "up") snakY -= box;
+    if (direction == "down") snakY += box;
+
+    snak.pop();
+
+    let newHead = {
+        x: snakX, 
+        y: snakY
+    }
+
+    snak.unshift(newHead);
+
+}
+
+let game = setInterval(starto, 100);
